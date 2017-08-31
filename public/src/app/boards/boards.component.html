@@ -1,0 +1,91 @@
+<div class="boardComp">
+  <div class="displayBoard" *ngIf="!boardView && myAccount">
+    <a *ngIf="currentUser" href="profile/{{currentUser._id}}/boards#newboard">
+      <div class="graysquare">
+        <img class="plus" src="/assets/images/plus.png">
+      </div>
+      <div class="inboard">
+        <p class="boardLabel">Create Board</p>
+      </div>
+    </a>
+  </div>
+
+  <ng-container *ngFor="let board of boards">
+    <ng-container *ngIf="!boardView">
+      <div class="displayBoard">
+        <div class="graysquare" (click)="display(board)">
+          <div class="thumbnail">
+            <ng-container *ngFor="let pin of pins">
+              <ng-container *ngFor="let post of board._pins">
+                <div *ngIf="post==pin._id" style="display:inline-block">
+                  <img src="{{pin.image}}" height="auto" width="60px" style="display:inline-block;">
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+        <div class="inboard">
+          <p class="boardLabel">{{board.name}}</p>
+          <a *ngIf="myAccount" class="delete" href="javascript:void(0)" (click)="delete(board._id);ngOnInit()">Delete</a>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="boardView">
+    <br>
+    <h2 style="color:#424242;display:inline-block"> {{viewing.name}}</h2>
+    <a (click)="allBoards()" href="javascript:void(0)" style="color:#888;text-decoration:underline;display:inline-block;">back</a>
+
+    <div class="boardPins">
+      <div class="pinsContainer">
+        <div *ngFor="let pin of viewing._pins">
+          <ng-container *ngFor="let img of pins">
+            <!-- <div class="pinsContainer"> -->
+            <div *ngIf="img._id==pin" class="pins">
+              <a [routerLink]="['/', 'pin', img._id]"><img src="{{img.image}}" height="auto" width="200" style="border-radius:5px;"></a>
+              <p class="p-left" style="margin:2px">{{img.title}}</p><button class="p-right" (click)="removePin(img, viewing)">X</button>            
+            </div>
+            <!-- </div> -->
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+
+  <!-- lightbox container hidden with CSS -->
+  <a class="lightbox" id="newboard">
+    <div class="newBoard">
+      <a class="close" *ngIf="currentUser" href="profile/{{currentUser._id}}/boards#" (click)="ngOnInit(); createNewStatus()">X</a>
+      <h3 *ngIf="createNew"> Create New Board </h3>
+      <h3 *ngIf="!createNew"> New Board Created!</h3>
+      <br>
+      <hr>
+      <div style="margin-top:30px;margin-left:30px;">
+        <div *ngIf="createNew">
+          <form (submit)="newBoard(); ngOnInit()" #boardform="ngForm" id="form">
+            Board Name <input value="profile/boards#" [(ngModel)]="board.name" placeholder="enter a name for your board"
+              type="text" name="boardName" style="font-size:12px;padding:5px;margin-left:30px;width:300px;height:30px;background-color:gainsboro;border:none;">
+            <br>
+            <input type="submit" value="create" style="font-size:16px;color:#888;margin-top:30px;margin-right:60px;float:right;height:20px;border:none;background-color:white;">
+          </form>
+        </div>
+        <div *ngIf="!createNew" style="text-align:center;">
+          <a href="profile/{{currentUser._id}}/boards#" (click)="createNewStatus();ngOnInit()" style="text-decoration:underline;color:#888;font-size:20px;">back to boards</a>
+        </div>
+
+
+      </div>
+    </div>
+  </a>
+
+
+
+
+
+
+
+
+</div>

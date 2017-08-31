@@ -1,0 +1,21 @@
+{
+  "name": "Pinterest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.13.4",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.6",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}

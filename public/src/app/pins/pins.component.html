@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="createBoard" *ngIf="_pinService.viewedUser._id == _pinService.loggedUser._id">
+      <a *ngIf="currentUser" href="profile/{{currentUser._id}}/pins#newpin">
+      <div class="graysquare">
+        <img class="plus" src="/assets/images/plus.png" height="40" width="43">
+      </div>
+      <div class="inboard">
+      <p class="createBoard" >Create Pin</p>
+      </div>
+      </a>
+</div>
+
+<a class="lightbox" id="newpin">
+  <div class="newBoard">
+<a *ngIf="currentUser" class="close" href="profile/{{currentUser._id}}/pins#">X</a>
+
+<h2>Create a new pin</h2>
+<div class="url-form" *ngIf='!lastStep'>
+  <div class="url-form">
+  <form (submit)="gotUrl()">
+    <input type="text" name="address" [(ngModel)]="url.address" placeholder=" enter URL">
+    <button type="submit">Next</button>
+  </form></div>
+
+  <div class="grid" *ngIf="imageOptions">
+    <div class="choose-text">Choose an image for your pin!</div>
+    <div class="pin-choice" (click)="chooseImg(link)" *ngFor="let link of imageList"><img src="{{link}}" (click)="chooseImg(link)"></div>
+  </div>
+</div>
+
+<div class="last-step" *ngIf="lastStep">
+  <div class="left">
+    <img src="{{pin.img}}">
+  </div>
+
+  <div class="right">
+  <form class="form2" (submit)="createPin()" #pinData="ngForm"> 
+    <div class='form-section'>
+      <div class='label1'>Give your pin a title:</div>
+      <input class='input1' type="text" name="title" required #title="ngModel" [(ngModel)]="pin.title">
+    </div>
+    <div class='form-section'>
+      <div class='label2'>Description:</div>
+      <textarea class='input2' type="text" name="desc" [(ngModel)]="pin.description"></textarea>
+    </div>
+    <div class="board-text">Choose a board:</div>
+    <div class="board-choice" *ngFor="let board of boards">
+      <input type="radio" name="board" value="{{board._id}}" [(ngModel)]="pin.board">
+      <p>{{board.name}}</p>
+    </div>
+    <div class='form-section'>
+    <div class="board-text">Select a pin category:</div>
+    <select class="categories" name="category" required [(ngModel)]="pin.category" #category="ngModel">
+      <option *ngFor="let interest of interests" value="{{interest.topic}}">{{interest.topic}}</option>
+    </select></div>
+    <div><button class="create-pin" type="submit" [disabled]="!pinData.valid">Create Pin</button></div>
+  </form>
+  </div>
+</div>
+
+</div></a>
+
+<div class="userPins">
+  <div class="frame" *ngFor="let pin of pins">
+    <h4 class='title'>{{pin.title}}</h4>
+    <div class="img-learn">Learn more at:</div>
+    <div class="img-link"><a href='{{pin.url}}' target="_blank">{{pin.url}}</a></div>
+    <a [routerLink]="['/', 'pin', pin._id]"><img class="pinImages" src="{{pin.image}}"></a>
+  </div>
+</div>
+
+
+  
+

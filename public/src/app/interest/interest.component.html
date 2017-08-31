@@ -1,0 +1,14 @@
+<div id="wrapper">
+  <div id="header">
+    <h2 style="color:#bd081c;font-size:26px">What are you interested in?</h2>
+    <h2 style="color:#555;font-size:26px">Pick 5 (or more!) to discover new ideas</h2>
+  </div>
+  <div id="interestContainer">
+    <div class="interest" *ngFor="let interest of interests, let idx = index">
+      <img (click)="counter(interest.topic, idx)" src="{{interest.url}}">
+      <p [ngClass]="{'red': interest.selected}">{{interest.topic}}</p>
+    </div>
+  </div>
+  <button *ngIf="counterText" style="background-color:white;border-radius:5px;border:none;color:#555555" disabled>Follow {{interestCounter}} more</button>
+  <button (click)="goHome()" *ngIf="done" style="background-color:#BD081C;color:white">Done</button>  
+</div>

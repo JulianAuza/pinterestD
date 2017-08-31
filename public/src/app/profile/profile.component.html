@@ -1,0 +1,32 @@
+ <div *ngIf="loggedIn" class="container"> 
+  <div class="profileHeader">
+    <h2>{{currentUser.name}}</h2>
+    <div class="profileRight">
+      <div class="follows">
+        <div class="follow">
+          <p class="number">{{currentUser.followers.length}}</p>
+          <p>Followers</p>
+        </div>
+        <div class="follow">
+          <p class="number">{{currentUser.following.length}}</p>
+          <p>Following</p>
+        </div>
+        <!-- <div *ngIf="_pinService.loggedUser._id != _pinService.viewedUser._id && !following"><button (click)="follow()">Follow</button></div>
+         <div *ngIf="_pinService.loggedUser._id != _pinService.viewedUser._id && following">
+          <p>Following</p>
+          <button (click)="unfollow()">Unfollow</button>
+        </div>  -->
+      </div>
+      <div class="profile" id="profileContainer">
+        <p id="profilePicText">Upload Profile Pic</p>
+      </div>
+    </div>
+    <div class="profileNav">
+      <a href="javascript:void(0)" class="nav" [routerLink]="['boards']" [routerLinkActive]="['active']"> Boards</a>
+      <a href="javascript:void(0)" class="nav" [routerLink]="['pins']" [routerLinkActive]="['active']"> Pins </a>
+    </div>
+  </div>
+  <div class="profileContent">
+    <router-outlet></router-outlet>
+  </div>
+</div>

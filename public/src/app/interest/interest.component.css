@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    overflow: hidden;
+}
+#wrapper{
+    width: 800px;
+    height: 550px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 80px;
+    background-color: #DCDCDC;
+}
+#header{
+    height: 65px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+#interestContainer{
+    height: 320px;
+    padding-left: 40px; 
+    padding-right: 40px; 
+    padding-bottom: 10px; 
+    padding-top: 10px;     
+    overflow: scroll;
+}
+#footer{
+    height: 100px;
+    padding: 40px;
+}
+button{
+    width: 750px;
+    height: 60px;
+    margin-left: 25px;
+    font-size: 24px;
+    color: #aaa;
+}
+.interest{
+    width: 136px;
+    height: 160px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 10px;
+    background-size: cover;
+}
+img{
+    width: 136px;
+    height: 136px;
+}
+.red{
+    color: red;
+    font-weight: bold;
+}
+.black{
+    color: black;
+}

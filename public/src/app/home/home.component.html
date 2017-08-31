@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>home</h1>
+  <br>
+</div>
+<div *ngIf="pins" class="pinsContainer">
+  <div *ngFor="let pin of pins" class="pins">
+    <a [routerLink]="['/', 'pin', pin._id]"><img src="{{pin.image}}" style="width:200px;border-radius:5px;"></a>
+    <p *ngIf="pin" style="color:#888;margin:2px;display:inline-block">{{pin.title}}</p>
+    <a href="home#addtoboard" (click)="pinAdding(pin)" class="plus" style="text-decoration:none;float:right;display:inline-block;font-size:20px;margin-right:5px">+</a>
+  </div>
+</div>
+
+<a class="lightbox" id="addtoboard">
+  <div class="addToBoard">
+    <div class="lightBoxHeader">
+      <h2 style="display:inline-block;">Add to Board</h2>
+      <a class="close" href="home#" (click)="falseCreated()">X</a>
+    </div>
+    <hr>
+    <div class="LightBoxContentContainter">
+
+      <div *ngIf="!created">
+        <div class="addPinThumb">
+          <h4 *ngIf="addPinBoard" style="color:#888">{{addPinBoard.title}}</h4>
+          <img *ngIf="addPinBoard" src="{{addPinBoard.image}}" style="width:200px;border-radius:5px;">
+        </div>
+
+        <div *ngIf="pins.length>=1" class="addBoardSelect">
+          <ng-container *ngFor="let board of boards">
+            <ng-container *ngIf="board._owner==currentUser._id">
+              <div class="displayBoard">
+                <h5 style="color:#888">{{board.name}}</h5>
+                <ng-container *ngFor="let pin of pins">
+                  <ng-container *ngIf="board._pins[1]==pin._id" style="display:inline-block">
+                    <img src="{{pin.image}}" height="auto" height="25px" style="display:inline-block;">
+                  </ng-container>
+                </ng-container>
+                <a class="add-color" href="javascript:void(0)" (click)="addToBoard(board._id,addPinBoard._id); createdStatus();">Add to Board </a>
+              </div>
+            </ng-container>
+          </ng-container>
+          <form (submit)="createBoard();createdStatus()">
+            <p style="margin-bottom:5px">Create new board</p>
+            <label>Board Name</label>
+            <input style="width:200px;height:25px;" type="text" name="boardName"
+            required
+            [(ngModel)]="newBoard.boardName">
+            <input style="width:100px;margin-top:5px;background-color: #938888;color: white;height: 20px;" type="submit" value="Add to new board">
+          </form>
+        </div>
+      </div>
+
+      <div *ngIf="created">
+        <div class="boardSucess">
+        <h4>Sucessfully added!</h4>
+        <br>
+        <br>
+        <a href="home#" (click)="falseCreated()" style="color:#888"> Back to Pins </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</a>

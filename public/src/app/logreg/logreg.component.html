@@ -1,0 +1,50 @@
+<div class="loginwrap">
+  <div id="wrapper">
+      <img src="/assets/images/pinterestlogo.png" style="height:40px;width:40px;vertical-align:middle;padding:6px;margin-right:0px;">
+      <form #subForm="ngForm" *ngIf="register" (submit)="onSubmit()">
+        <h1 class="welcomeToPinText">Welcome to Pinterest</h1>
+      <input class="emailPassword" type="text" name="email" placeholder="Email"
+        required
+        minlength="5"
+        [(ngModel)]="user.email"><br>
+      <input class="emailPassword" type="password" name="password" placeholder="Create a Password"
+        required
+        [(ngModel)]="user.password">
+      <input [disabled]="!subForm.valid" id="submit" type="submit" value="Continue">
+      <p *ngIf="exists">Email already exist!</p>
+      <h2 style="font-family: 'Helvetica Neue'">OR</h2>
+      <button (click)="loginForm()" id="loginButton">Login</button>
+    </form>
+
+    <form #regForm="ngForm" *ngIf="gender" (submit)="addUser()">
+      <h1 class="welcomeToPinText">Welcome to Pinterest</h1>
+      <p>{{user.email}}</p>
+      <input id="name" type="text" name="name" placeholder="Full name"
+        required
+        minlength="2"
+        [(ngModel)]="user.name">
+      <input id="age" type="age" name="age" placeholder="Age"
+        required
+        [(ngModel)]="user.age"><br>
+      <input id="radio" [(ngModel)]="user.gender" type="radio" value="male" name="male">Male
+      <input type="radio" [(ngModel)]="user.gender" value="female" name="female">Female
+      <input type="radio" [(ngModel)]="user.gender" value="custom" name="custom">Custom<br>
+      <input [disabled]="!regForm.valid" id="signUp" type="submit" value="Sign up"><br>
+      <button id="back" (click)="goBack()" type="submit">Back</button>
+    </form>
+
+    <form *ngIf="logForm" #loginForm="ngForm" (submit)="loginUser()">
+      <h1 class="welcomeToPinText">Log in to see more</h1>
+      <input class="emailPassword" type="text" name="email" placeholder="Email"
+        required
+        [(ngModel)]="login.email"><br>
+      <input class="emailPassword" type="password" name="password" placeholder="Password"
+        required
+        [(ngModel)]="login.password">
+      <input [disabled]="!loginForm.valid" id="submit" type="submit" value="Login">
+      <p *ngIf="valid">Please register or enter valid credentials</p>
+      <button id="back" (click)="goBackToLoginReg()" type="submit">Back</button>      
+    </form>
+
+  </div>
+</div>

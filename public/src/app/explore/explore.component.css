@@ -1,0 +1,170 @@
+div.container{
+    width:970px;
+    margin:auto;
+}
+div.pinsContainer{
+	column-width: 320px;
+    column-gap: 2px;
+    columns:3; 
+    width: 90%;
+    width: 700px;
+    /* max-height: 800px;    */
+    display: inline-block;
+    float: right;
+}
+div.boardSucess{
+    text-align: center;
+    margin:auto;
+    padding:100px;
+    padding-left: 156px;
+}
+
+div.pinHolder{
+    height:600px;
+    display: inline-block;
+    overflow: scroll;
+}
+div.categoriesContainer{
+    display: inline-block;
+    padding:20px;
+    padding-left:15px;
+    vertical-align: top;
+}
+ul.categories li a:target{
+    color:black;
+    font-weight: 600;
+}
+ul.categories li a:hover{
+    color:black;
+}
+a.plus{
+    color:white;
+}
+
+ul.categories li{
+    list-style: none;
+    margin:10px;
+}
+ul.categories li a{
+    text-decoration: none;
+    color:#888;
+}
+div.pins{
+    background-color: white;
+    display: inline-block;
+    width:200px;
+    height:auto;
+    padding:10px;
+    margin-bottom:5px;
+    border-radius:5px;
+}
+div.pins:hover{
+    background-color: #E0E0E0;
+} 
+div.pins:hover a{
+    background-color: #E0E0E0;
+    color:#888
+} 
+
+/* Light Box */
+
+*{
+ margin: 0px;
+ padding: 0px;
+}
+html,body {
+  font-family: 'Raleway', sans-serif;
+  padding: 0 2em;
+  font-size: 18px;
+  background: #222;
+  color: #aaa;
+  text-align:center;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 200;
+  margin: 0.5em 0 0.2em 0;
+}
+
+p {
+  margin: 1.5em 0;
+  color: #888;
+}
+a.close{
+    float:right;
+    display: inline-block;
+    text-decoration: none;
+    color:#888;
+}
+.thumbnail {
+  max-width: 40%;
+}
+hr{
+   border: 1px solid #ccc;
+}
+/** LIGHTBOX MARKUP **/
+
+.lightbox {
+	/** Default lightbox to hidden */
+	display: none;
+	/** Position and style */
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 90%;
+	max-height: 80%;
+	margin-top: 2%;
+}
+
+.lightbox:target {
+	/** Remove default browser outline */
+	outline: none;
+
+	/** Unhide lightbox **/
+	display: block;
+}
+
+/* Light Box Content */
+div.addToBoard{
+    background-color: white;
+    width:500px;
+    height:400px;
+    margin: auto;
+    margin-top:150px;
+    padding:20px;
+    border-radius: 5px;
+}
+div.displayBoard{
+    height:50px;
+    border-radius: 5px;
+    margin-bottom:5px;
+    padding: 5px;
+}
+div.displayBoard:hover{
+    background-color: #E0E0E0;
+}
+div.LightBoxContentContainter{
+    padding:20px;
+    display: inline-block;
+}
+div.addPinThumb{
+    display: inline-block;
+    width:200px;
+}
+div.addBoardSelect{
+    padding:20px;
+    width:220px;
+    float:right;
+    display: inline-block;
+    max-height:300px;
+    overflow: scroll;
+}

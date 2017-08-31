@@ -1,0 +1,91 @@
+#wrapper{
+    margin: auto;
+    width: 350px;
+    height: 500px;
+    box-shadow:  1px 1px 5px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: white;
+}
+.emailPassword{
+    width: 252px;
+    height: 36px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding-left: 20px;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    border:none;
+}
+.welcomeToPinText{
+    color: #555555;
+    font-weight: bold;
+    font-family: 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', arial, sans-serif;
+}
+#submit{
+    width: 279px;
+    height: 36px;
+    background-color: #BD081C;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    border:none;
+}
+#name{
+    width: 180px;
+    height: 36px;
+    padding-left: 20px;
+    font-size: 15px;
+    background-color: #F0F0F0;    
+}
+#age{
+    width: 40px;
+    height: 36px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    font-size: 15px;
+    background-color: #F0F0F0;    
+}
+#signUp{
+    width: 272px;
+    height: 36px;
+    background-color: #BD081C;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+#radio{
+    margin-bottom: 20px;
+}
+#back{
+    width: 272px;
+    height: 36px;
+    background-color: white;
+    border-bottom: 1px solid grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 20px;
+}
+#loginButton{
+    width: 279px;
+    height: 36px;
+    background-color: #BD081C;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    border:none;  
+}
+h2{
+    color: #555555;
+}
+div.loginwrap{
+    width: 100%;
+    background-image: url('/assets/images/pinbg.jpg');
+    position:absolute;
+    left:0;
+    right:0;
+}

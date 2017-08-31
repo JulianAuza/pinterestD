@@ -1,0 +1,115 @@
+<div class="container">
+ 
+  <br>
+</div>
+<div class="categoriesContainer">
+  <h3>Select Category:</h3>
+  <br>
+  <ul class="categories">
+    <li><a (click)="category('DIY and home improvment')" href="explore#DIY" id="DIY">DIY and home improvement</a></li>                 
+    <li><a (click)="category('Home decor')"   href="explore#homeDecor" id="homeDecor">Home decor</a></li>              
+    <li><a (click)="category('Food and drink')"   href="explore#foodDrink" id="foodDrink">Food and drink</a></li>               
+    <li><a (click)="category('Technology')"   href="explore#tech" id="tech">Technology</a></li>              
+    <li><a (click)="category('Humor')"   href="explore#humor" id="humor">Humor</a></li>            
+    <li><a (click)="category('Design')"  href="explore#design" id="design">Design</a></li>             
+    <li><a (click)="category('Travel')"   href="explore#travel" id="travel">Travel</a></li>              
+    <li><a (click)="category('Art')"   href="explore#art" id="art">Art</a></li>             
+    <li><a (click)="category('Photography')"  href="explore#photography" id="photography">Photography</a></li>               
+    <li><a (click)="category('Education')"   href="explore#ed" id="ed">Education</a></li>           
+    <li><a (click)="category('Recipes')"   href="explore#recipes" id="recipes">Recipes</a></li>            
+    <li><a (click)="category('Memes')"    href="explore#memes" id="memes">Memes</a></li>           
+    <li><a (click)="category('Life quotes')"    href="explore#quotes" id="quotes">Life quotes</a></li>              
+    <li><a (click)="category('Drawing')"   href="explore#drawing" id="drawing">Drawing</a></li>              
+    <li><a (click)="category('Craft beer')"  href="explore#beer" id="beer">Craft beer</a></li>           
+    <li><a (click)="category('Dogs')"   href="explore#dogs" id="dogs">Dogs</a></li>             
+    <li><a (click)="category('Weddings')"   href="explore#weddings" id="weddings">Weddings</a></li>           
+    <li><a (click)="category('Gardening')"   href="explore#gardening" id="gardening">Gardening</a></li>              
+    <li><a (click)="category('Furniture')"   href="explore#furniture" id="furniture">Furniture</a></li>            
+    <li><a (click)="category('Architecture')"   href="explore#architecture" id="architecture">Architecture</a></li>           
+  </ul>
+</div>
+<div style="display:inline-block;float:right;">
+<h1 style="margin:0px;">Explore</h1>
+<div class="pinHolder">
+   
+    <div class="pinsContainer" *ngIf="!filtering">
+      <div *ngFor="let pin of pins" class="pins">
+        <a [routerLink]="['/', 'pin', pin._id]"><img src="{{pin.image}}" style="width:200px;border-radius:5px;"></a>
+        <p *ngIf="pin" style="color:#888;margin:2px;display:inline-block">{{pin.title}}</p>
+        <a href="explore#addtoboard" (click)="pinAdding(pin)" class="plus" style="text-decoration:none;float:right;display:inline-block;font-size:20px;margin-right:5px">+</a>
+      </div>
+    </div>
+    <div class="pinsContainer" *ngIf="filtering">
+      <div *ngFor="let pin of pins">
+        <ng-container *ngIf="pin.category==filter"> 
+        <div class="pins">
+        <a [routerLink]="['/', 'pin', pin._id]"><img src="{{pin.image}}" style="width:200px;border-radius:5px;"></a>
+        <p *ngIf="pin" style="color:#888;margin:2px;display:inline-block">{{pin.title}}</p>
+        <a href="explore#addtoboard" (click)="pinAdding(pin)" class="plus" style="text-decoration:none;float:right;display:inline-block;font-size:20px;margin-right:5px">+</a>
+        </div>
+        </ng-container> 
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<a class="lightbox" id="addtoboard">
+  <div class="addToBoard">
+    <div class="lightBoxHeader">
+      <h2 style="display:inline-block;">Add to Board</h2>
+      <a class="close" href="explore#">X</a>
+    </div>
+    <hr>
+    <div class="LightBoxContentContainter">
+
+      <div *ngIf="!created">
+        <div class="addPinThumb">
+          <h4 *ngIf="addPinBoard" style="color:#888">{{addPinBoard.title}}</h4>
+          <img *ngIf="addPinBoard" src="{{addPinBoard.image}}" style="width:200px;border-radius:5px;">
+        </div>
+
+        <div *ngIf="pins.length>=1" class="addBoardSelect">
+
+          <ng-container *ngFor="let board of boards">
+
+            <ng-container *ngIf="board._owner==currentUser._id">
+              <div class="displayBoard">
+                <h5 style="color:#888">{{board.name}}</h5>
+
+                <ng-container *ngFor="let pin of pins">
+
+
+                  <ng-container *ngIf="board._pins[1]==pin._id" style="display:inline-block">
+
+                    <img src="{{pin.image}}" height="auto" height="25px" style="display:inline-block;">
+                  </ng-container>
+
+                </ng-container>
+                <a  style="color:#888;" class="add-color" href="javascript:void(0)" (click)="addToBoard(board._id,addPinBoard._id); createdStatus();">
+                Add to Board 
+                </a>
+
+              </div>
+
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+
+      <div *ngIf="created">
+        <div class="boardSucess">
+        <h4>Sucessfully added!</h4>
+        <br>
+        <br>
+        <a style="color:#888;" href="explore#" (click)="falseCreated()"> Back to Pins </a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</a>

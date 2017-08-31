@@ -1,0 +1,62 @@
+<div  *ngIf="pin" class='container'>
+<div class='frame'>
+  <h2>{{pin.title}}</h2>
+  <button (click)="goBack()">X</button>
+  <a href="{{pin.url}}" target="_blank"><div class="pimage"><img class="pimage2" src='{{pin.image}}'>
+    <a href="/pin/{{pinID}}#addtoboard" (click)="pinAdding(pin)" class="plus">+</a>
+  </div></a>
+  <p>Posted by: <a class="creator" [routerLink]="['/', 'profile', creator._id, 'boards']">{{creator.name}}</a></p>
+  <p>{{pin.description}}</p>
+</div>
+
+  <!-- <a href="/pin/{{pinID}}#addtoboard" (click)="pinAdding(pin)" class="plus" style="text-decoration:none;float:right;display:inline-block;font-size:20px;margin-right:5px">+</a> -->
+
+<a class="lightbox" id="addtoboard">
+  <div class="addToBoard">
+    <div class="lightBoxHeader">
+      <h2 style="display:inline-block;">Add to Board</h2>
+      <a class="close" href="/pin/{{pinID}}#">X</a>
+    </div>
+    <hr>
+    <div class="LightBoxContentContainter">
+      <div class="addPinThumb">
+        <h4 *ngIf="addPinBoard" style="color:#888">{{addPinBoard.title}}</h4>
+        <img *ngIf="addPinBoard" src="{{addPinBoard.image}}" style="width:200px;border-radius:5px;">
+      </div>
+
+      <div *ngIf="pins.length>=1" class="addBoardSelect">
+
+        <ng-container *ngFor="let board of boards">
+          
+            <ng-container *ngIf="board._owner==currentUser._id">
+              <div class="displayBoard">
+                <h5 style="color:#888">{{board.name}}</h5>
+
+                <ng-container *ngFor="let pin of pins">
+                  
+
+                  <ng-container *ngIf="board._pins[1]==pin._id" style="display:inline-block"> 
+        
+                  <img src="{{pin.image}}" height="auto" height="25px" style="display:inline-block;">
+                  </ng-container> 
+
+                </ng-container>
+                <a  class="add-color" href="javascript:void(0)" (click)="addToBoard(board._id,addPinBoard._id)">
+                Add to Board 
+                </a>
+         
+            </div>
+          
+
+
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+
+  </div>
+</a>
+
+
+</div>
