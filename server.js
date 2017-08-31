@@ -9,6 +9,9 @@ var app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public/dist')));
 
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 route_setter(app);
 
 var server = app.listen(8000, function () {
